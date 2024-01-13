@@ -1,0 +1,49 @@
+{% extends 'layouts/menu-lateral.html' %}
+{% block titulo %} Municipios {% endblock %}
+{% block breve_descripcion %}Añadir Municipio{% endblock %}
+{% block listar_municipio %}"active"{%endblock%}
+{%block open_gestor%}open{%endblock%}
+{% block content %}
+
+
+<a href="/listar_municipio"><button class="btn  btn-primary" > <i class="fa fa-reply-all"></i> Volver </button></a>
+<div >
+<h2>Agregar reporte de Municipios</h2>
+</div>
+<div class="widget">
+<div class="widget-header">
+<h3>
+	<i class="fa fa-edit"></i> 
+	Agregando reporte de Municipios
+</h3>
+</div>
+<div class="widget-content">
+
+	<form id='formulario' class="form-horizontal" enctype="multipart/form-data" method='post' action=''>{% csrf_token%}
+		<div class="form-group">
+			<div class="item col-sm-4">
+			{{formulario.nom_municipio.label}}  {{formulario.nom_municipio}} {{formulario.nom_municipio.error}}	
+			</div>
+			<div class="item col-sm-4">
+		{{formulario.codigo_municipio.label}}   {{formulario.codigo_municipio}}{{formulario.codigo_municipio.error}}	
+			</div>
+			<div class="item col-sm-4">
+				<select name="id_provinciaMunicipioPertenece" id="id_provinciaMunicipioPertenece" class="select2">
+					<option value="">{{formulario.provinciaMunicipioPertenece.label}}  {{formulario.provinciaMunicipioPertenece.nom_provincia}} </option>
+					
+				</select>
+				
+			</div>
+		</div>
+<hr class="inner-separator">
+	<div class="item form-group">
+		<div class="item col-sm-4">
+		<button class="btn  btn-primary" type="submit">
+		<i class="fa fa-save  "></i>
+		Guardar
+		</button>
+		</div>
+	</div>
+	</form>	
+</div>
+{% endblock %}
